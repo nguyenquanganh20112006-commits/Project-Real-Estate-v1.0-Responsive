@@ -1,11 +1,30 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector(".nav-menu");
+const closeMenu = document.querySelector(".close-menu");
 
-menuToggle.addEventListener("click", function(){
-
+// Đóng mở menu
+menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
     navMenu.classList.toggle("active");
+});
+
+// Đóng bằng nút X
+closeMenu.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+});
+
+// Click ngoài menu => đóng
+document.addEventListener("click", (e) => {
+
+    if (
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+    ) {
+        navMenu.classList.remove("active");
+    }
 
 });
+
 const header = document.querySelector(".header");
 const hero = document.querySelector(".hero");
 

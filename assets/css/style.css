@@ -134,6 +134,16 @@ a {
     color: #ff5a3c;
 }
 
+.close-menu {
+    font-size: 20px;
+    cursor: pointer;
+    color: #071A1D;
+}
+
+.close-menu:hover {
+    color: #FF5A3D;
+}
+
 .nav-right {
     display: flex;
     align-items: center;
