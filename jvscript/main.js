@@ -93,10 +93,10 @@ const properties = [
     }
 ];
 
-// Subtask 3: Render ra HTML bằng forEach
+
 const container = document.getElementById("listings-cards");
 
-properties.forEach(function(property) {
+properties.forEach(function (property) {
     const card = `
         <div class="listing-card">
             <div class="listing-image">
@@ -156,3 +156,35 @@ properties.forEach(function(property) {
     `;
     container.innerHTML += card;
 });
+
+
+fetch('./data/news.json')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (newsData) {
+        const newsContainer = document.getElementById('news-cards');
+
+        newsData.forEach(function (item) {
+            newsContainer.innerHTML += `
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="${item.img}" alt="${item.title}">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-meta">
+                            <span><i class="fa-solid fa-user"></i> ${item.author}</span>
+                            <span><i class="fa-solid fa-tag"></i> ${item.category}</span>
+                        </div>
+                        <h3>${item.title}</h3>
+                        <div class="news-footer">
+                            <div class="news-date">
+                                <i class="fa-solid fa-calendar"></i> ${item.date}
+                            </div>
+                            <a href="#" class="news-read">READ MORE</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    });
