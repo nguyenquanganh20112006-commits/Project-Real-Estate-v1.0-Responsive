@@ -1058,4 +1058,16 @@ a {
     .listings-wrapper h2 {
         font-size: 28px;
     }
+    .listings-cards {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-bottom: 20px;
+    }
+
+    .listing-card {
+        flex: 0 0 calc(50% - 8px);
+        scroll-snap-align: start;
+    }
 }
