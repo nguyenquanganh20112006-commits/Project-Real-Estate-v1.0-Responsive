@@ -93,6 +93,29 @@ const properties = [
     }
 ];
 
+const navLinks = document.querySelectorAll(".nav-menu a");
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+        // 1. Đóng menu mobile ngay lập tức sau khi click chọn mục
+        navMenu.classList.remove("active");
+
+        // 2. Xử lý cuộn mượt mà (Smooth Scroll) đến đúng ID section
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+            e.preventDefault(); // Chặn hành vi nhảy trang giật cục mặc định
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+});
+
 
 const container = document.getElementById("listings-cards");
 
